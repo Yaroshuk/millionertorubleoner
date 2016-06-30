@@ -17,14 +17,17 @@
 
 	function createNumb(num) {
 		var num = ' ' + (num/ 10000).toFixed(2);
-		endNumRub = num.split('.')[0];
-		endNumCop = num.split('.')[1] ? num.split('.')[1] : 0;
+		endNumRub = +num.split('.')[0];
+		endNumCop = num.split('.')[1] ? +num.split('.')[1] : 0;
+
+		console.log(endNumCop);
+		console.log(endNumRub);
 
 		generateMessage();
 	}
 
 	function generateMessage() {
-		message = endNumRub + ' ' + declOfNum(endNumRub, ['рубль', 'рубля', 'рублей']);
+		message = endNumRub ? endNumRub + ' ' + declOfNum(endNumRub, ['рубль', 'рубля', 'рублей']) : '';
 		message += endNumCop ? ' ' + endNumCop + ' ' + declOfNum(endNumCop, ['копейка', 'копейки', 'копеек']) : '';
 		
 		html.result.innerHTML = message;
